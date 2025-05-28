@@ -1,6 +1,7 @@
 from stats import count_words
 from stats import count_characters
 from stats import sort_character_list
+import sys
 
 def get_book_text (book_file_path):
     Book_text = "";
@@ -26,16 +27,10 @@ def print_report(book):
 
 
 def main ():
-    #print(get_book_text("./books/frankenstein.txt"))
-    #num_words = count_words(get_book_text("./books/frankenstein.txt"))
-    #print(f"{num_words} words found in the document")
-    #print(f"{count_words(get_book_text("./books/frankenstein.txt"))} words found in the document")
-
-    #print(f"{count_characters(get_book_text("./books/frankenstein.txt"))}")
-
-    #print(f"{sort_character_list(count_characters(get_book_text("./books/frankenstein.txt")))}")
-    #print_list_by_line(sort_character_list(count_characters(get_book_text("./books/frankenstein.txt"))))
-    print_report("./books/frankenstein.txt")
-    return
+    if len(sys.argv) > 1:
+        print_report(sys.argv[1])
+    else:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
 
 main()
